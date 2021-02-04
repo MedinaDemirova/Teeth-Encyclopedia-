@@ -1,0 +1,35 @@
+{{>second-menu}}
+<h1>TEETH ANATOMY</h1>
+
+<h3>Humans have the following types of teeth:</h3>
+<ul>
+    <li>Incisors <br>Incisors are the sharp teeth at the front of the mouth that bite into food and cut it into smaller pieces. They are flat with a thin edge. They are also called anterior teeth.
+Both children and adults have eight incisors — four central incisors at the front of the mouth, two on each row, with one lateral incisor positioned on either side of them.</li>
+<li>Canines <br>Canines are the sharp, pointed teeth that sit next to the incisors and look like fangs. Dentists also call them cuspids or eyeteeth. Canines are the longest of all the teeth, and people use them to tear food.
+Both children and adults have four canines. Children usually get their first permanent canines between the ages of 9 and 12. The lower canines tend to come through slightly before those in the upper jaw.</li>
+<li>Premolars <br> or bicuspids, are bigger than the incisors and canines. They have many ridges and help chew and grind up food. Adults have eight premolars. The first and second premolars are the molars that sit next to the canines.
+Young children do not have premolar teeth. These first appear as permanent teeth when children are 10–12 years old.</li>
+<li>Molars <br> Molars are the biggest of all the teeth. They have a large, flat surface with ridges that allow them to chew food and grind it up. Adults have 12 permanent molars — six on the bottom and top jaw, and children have eight primary molars.
+The last molars to erupt are wisdom teeth, or third molars, which usually come through between the ages of 17–21. These sit at the end of the row of teeth, in the far corners of the jaw. Some people do not have all four wisdom teeth, or the teeth may stay unerupted in the bone and never appear in the mouth.
+<br> Sometimes wisdom teeth can become impacted, which means they can become trapped under the gum and are unable to come through properly.
+Wisdom teeth that only come through halfway or are in the wrong position can increase the risk for infection or damage in surrounding areas. It is essential to see a dentist if people have any issues with their wisdom teeth.
+People may experience mild discomfort when their wisdom teeth start pushing through the gums, but anyone feeling a lot of pain or has swelling should see a dentist.
+A dentist may need to remove wisdom teeth if a person has tooth decay, pain, or an infection. People do not need these teeth for chewing, and they are difficult to keep clean because of their position far back in the mouth.</li>
+</ul>
+
+<img src="https://pixfeeds.com/images/31/605004/1200-605004-10490659.jpg" alt="toot-anatomy">
+
+{{#each teeth}}
+<div class="container" style=" box-shadow: 0 0 10px rgb(3, 66, 3);">
+    <div class="card mt-4 ">
+        <div class="card-body">
+            <h4 class="card-title">{{name}}</h4>
+            <h4 class="card-title text-muted">{{latinName}}</h4>
+            <div class="card-text mb-2">{{description}}</div>
+            <br>
+           <a href="/teeth/show"></a>
+        </div>
+    </div>
+    <br>
+</div>
+{{/each}}
