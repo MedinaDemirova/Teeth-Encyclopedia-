@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const personalRoute = require('./router/personal');
 const teethRoute = require('./router/teeth');
+const methodOverride = require('method-override');
 
 //Mongo DB Atlass Setup
 const MongoClient = require('mongodb').MongoClient;
@@ -21,6 +22,8 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(methodOverride('_method'))
+
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, usecCeateIndex: true });
 
 app.engine('.hbs', handlebars({ extname: '.hbs' }));
@@ -28,8 +31,6 @@ app.engine('.hbs', handlebars({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
 app.use(express.urlencoded({ extended: false }));
-
-
 
 app.get('/', (req, res) => {
     res.render('homepage')

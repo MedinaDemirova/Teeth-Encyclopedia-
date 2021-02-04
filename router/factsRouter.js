@@ -4,7 +4,7 @@ const Fact = require('../models/createFact')
 
 router.get('/', async (req, res) => {
     try {
-        let facts = await Fact.find({}).lean();
+        let facts = await Fact.find({}).sort({ createdAt: 'desc' }).lean();
         console.log (facts)
         res.render('facts', {facts:facts});
     } catch{
@@ -30,6 +30,11 @@ router.post('/create-fact', async (req, res) => {
             .status(400, 'A required action was not successful! Try again!')
             .redirect('/teeth/facts/ctreate-fact');
     }
+});
+
+router.delete('/:id', async (req, res) => {
+    await Fact.findByIdAndDelete(req.params.id);
+    res.redirect('/teeth/facts');
 });
 
 

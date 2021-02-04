@@ -11,7 +11,6 @@ router.get('/teeth-anatomy', (req, res) => {
 });
 
 
-
 router.get('/show/:id', async(req, res) => {
         let id = req.params.id;
         console.log(id)
