@@ -1,0 +1,22 @@
+<h1>INTERESTING FACTS ABOUT HUMAN TEETH</h1>
+<a href="/teeth/facts/create-fact" class="btn ">Add a fact..</a>
+
+
+{{#each facts}}
+<div class="container" style=" box-shadow: 0 0 10px rgb(3, 66, 3);">
+    <div class="card mt-4 ">
+        <div class="card-body">
+            <h4 class="card-title">{{creator}}</h4>
+            <div class="card-subtitle text-muted mb-2">{{createdAt}}</div>
+            <div class="card-text mb-2">{{content}}</div>
+            <br>
+            <form action="/articles/{{_id}}?_method=DELETE" method="POST" style="display: inline;">
+                <a href="/articles/edit/{{_id}}" class="btn btn-info">Edit</a></form>
+
+            <form action="/articles/{{_id}}?_method=DELETE" method="POST" style="display: inline; ">
+                <button type="submit" class="btn btn-danger">Delete</button></form>
+        </div>
+    </div>
+    <br>
+</div>
+{{/each}}
