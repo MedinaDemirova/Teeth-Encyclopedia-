@@ -30,8 +30,8 @@ router.get('/tests-and-treatments', (req, res) => {
     res.render('tests-and-treatments');
 });
 
-router.get('/videos', (req, res) => {
-    res.render('videos');
+router.get('/gallery', (req, res) => {
+    res.render('gallery');
 });
 
 router.use('/facts', factsRouter);

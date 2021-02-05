@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const personalRoute = require('./router/personal');
 const teethRoute = require('./router/teeth');
 const methodOverride = require('method-override');
+const path = require('path');
+const fs = require('fs')
 
 //Mongo DB Atlass Setup
 const MongoClient = require('mongodb').MongoClient;

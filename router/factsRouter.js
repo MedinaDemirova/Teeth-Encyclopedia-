@@ -12,7 +12,6 @@ router.get('/', async (req, res) => {
             .status(400, 'A required action was not successful! Try again!')
             .redirect('/teeth');
     }
-
 });
 
 //Create fact
