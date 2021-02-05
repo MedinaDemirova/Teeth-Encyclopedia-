@@ -8,6 +8,7 @@ const teethRoute = require('./router/teeth');
 const methodOverride = require('method-override');
 const path = require('path');
 const fs = require('fs')
+const PORT =process.env.PORT || 5005;
 
 //Mongo DB Atlass Setup
 const MongoClient = require('mongodb').MongoClient;
@@ -42,4 +43,4 @@ app.use('/personal', personalRoute);
 app.use('/teeth', teethRoute);
 
 
-app.listen(5005, () => console.log('Server is listening on port 5000...'));
+app.listen(PORT, () => console.log('Server is listening on port 5000...'));

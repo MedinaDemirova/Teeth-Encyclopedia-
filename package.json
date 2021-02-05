@@ -4,7 +4,8 @@
   "description": "Encyclopedia  of human teeth.  The project uses Express, Express- Handlebars, MongoDB, Mongoose",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "startNodemon": "nodemon server.js",
+    "start": "node server.js"
   },
   "engines": {
     "node": "12.x"
