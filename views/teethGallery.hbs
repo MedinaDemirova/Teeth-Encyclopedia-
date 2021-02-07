@@ -1,0 +1,18 @@
+<h2>Teeth galley</h2><br>
+<a href="/teeth/gallery/add-tooth" class="btn ">Add a tooth..</a>
+
+
+{{#each teeth}}
+<div>
+    <img src={{imageURL}}>
+    <p class="name">{{name}}</p>
+    <a class="btn" href="/show/{{_id}}">Read more</a>
+
+    <form action="/teeth/gallery/{{_id}}/edit?_method=DELETE" method="POST" style="display: inline;">
+        <a href="/teeth/gallery/{{_id}}/edit" class="btn btn-info">Edit</a></form>
+
+    <form action="/teeth/gallery/{{_id}}?_method=DELETE" method="POST" style="display: inline; ">
+        <button type="submit" class="btn btn-danger">Delete</button></form>
+
+</div>
+{{/each}}

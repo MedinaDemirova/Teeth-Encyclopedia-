@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const factsRouter = require('./factsRouter')
+const factsRouter = require('./factsRouter');
+const galleryRouter = require('./galleryRouter');
 
 router.get('/', (req, res) => {
     res.render('teeth');
@@ -11,16 +12,7 @@ router.get('/teeth-anatomy', (req, res) => {
 });
 
 
-router.get('/show/:id', async(req, res) => {
-        let id = req.params.id;
-        console.log(id)
-        try{
-        let tooth = await Teeth.findOne({ id }).lean();
-        res.render('showTooth', {tooth});
-        }catch{
-            res.redirect('/teeth');
-        } 
-});
+
 
 router.get('/conditions', (req, res) => {
     res.render('teeth-conditions');
@@ -30,14 +22,9 @@ router.get('/tests-and-treatments', (req, res) => {
     res.render('tests-and-treatments');
 });
 
-router.get('/gallery', (req, res) => {
-    res.render('gallery');
-});
+router.use('/gallery',galleryRouter);
 
 router.use('/facts', factsRouter);
-
-
-//router.get('/facts', factsRouter);
 
 module.exports = router;
 
