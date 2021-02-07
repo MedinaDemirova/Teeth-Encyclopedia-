@@ -17,9 +17,8 @@ router.get('/', async (req, res) => {
 //Read more
 router.get('/show/:id', async(req, res) => {
     let id = req.params.id;
-    console.log(id)
     try{
-    let tooth = await Tooth.findOne({ id }).lean();
+    let tooth = await Tooth.findById(id).lean();
     res.render('showTooth', {tooth});
     }catch{
         res.redirect('/teeth/gallery');
