@@ -51,42 +51,42 @@ router.post('/add-tooth', async (req, res) => {
 });
 
 
-/*
-//Edit fact
-router.get('/edit/:id', async (req, res) => {
+
+//Edit tooth
+router.get('/:id/edit', async (req, res) => {
     let id = req.params.id;
-    console.log(id)
     try {
-        let fact = await Fact.findById(req.params.id).lean();
-        res.render('edit-fact', { fact })
+        let tooth = await Tooth.findById(req.params.id).lean();
+        res.render('edit-tooth', { tooth })
     } catch {
         res
             .status(400, 'A required action was not successful! Try again!')
-            .redirect('/teeth/facts');
+            .redirect(`/teeth/gallery/${id}`);
     }
 });
 
-router.put('/edit/:id', async (req, res) => {
+router.put('/:id/edit', async (req, res) => {
     try {
-        req.fact = await Fact.findById(req.params.id);
-        req.fact.creator = req.body.creator;
-        req.fact.content = req.body.content;
-        await req.fact.save();
-        res.redirect('/teeth/facts');
+        req.tooth = await Tooth.findById(req.params.id);
+        req.tooth.name = req.body.name;
+        req.tooth.description = req.body.description;
+        req.tooth.imageURL= req.body.imageURL;
+        await req.tooth.save();
+        res.redirect(`/teeth/gallery/${id}`);
     } catch  {
         res
             .status(400, 'A required action was not successful! Try again!')
-            .redirect('/teeth/facts');
+            .redirect(`/teeth/gallery`);
     }
 });
 
-//Delete fact
+
+//Delete tooth
 router.delete('/:id', async (req, res) => {
-    await Fact.findByIdAndDelete(req.params.id);
-    res.redirect('/teeth/facts');
+    await Tooth.findByIdAndDelete(req.params.id);
+    res.redirect('/teeth/gallery');
 });
 
 
-*/
 
 module.exports = router;
