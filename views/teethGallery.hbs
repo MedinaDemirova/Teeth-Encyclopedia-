@@ -1,6 +1,9 @@
 <h2>Teeth galley</h2><br>
 <a href="/teeth/gallery/add-tooth" class="btn ">Add a tooth..</a> <br>
-
+<form action="/teeth/gallery" method="GET">
+    <input type="text" name="name" value="{{searchOption.name}}">
+    <button type="submit">Search</button>
+</form>
 
 {{#each teeth}}
 <div style=" display: inline-block;

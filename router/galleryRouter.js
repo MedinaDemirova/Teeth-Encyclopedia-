@@ -2,11 +2,18 @@ const express = require('express');
 const router = express.Router();
 const Tooth = require('../models/addTooth');
 
-//Teeth Gallery Home
+//Teeth Gallery Home and Search 
 router.get('/', async (req, res) => {
+    let searchOptions = {};
+    if (req.query.name != null && req.query.name !== '') {
+        searchOptions.name = new RegExp(req.query.name, 'i')
+    }
     try {
-        let teeth = await Tooth.find({}).lean();
-        res.render('teethGallery', { teeth: teeth });
+        let teeth = await Tooth.find(searchOptions).lean();
+        res.render('teethGallery', {
+            teeth: teeth,
+            searchOptions: req.query
+        })
     } catch{
         res
             .status(400, 'A required action was not successful! Try again!')
@@ -15,14 +22,14 @@ router.get('/', async (req, res) => {
 });
 
 //Read more
-router.get('/show/:id', async(req, res) => {
+router.get('/show/:id', async (req, res) => {
     let id = req.params.id;
-    try{
-    let tooth = await Tooth.findById(id).lean();
-    res.render('showTooth', {tooth});
-    }catch{
+    try {
+        let tooth = await Tooth.findById(id).lean();
+        res.render('showTooth', { tooth });
+    } catch{
         res.redirect('/teeth/gallery');
-    } 
+    }
 });
 
 //Create tooth
@@ -32,7 +39,7 @@ router.get('/add-tooth', (req, res) => {
 
 router.post('/add-tooth', async (req, res) => {
     try {
-        let newTooth = await new Tooth({ name: req.body.name, description: req.body.description,imageURL: req.body.imageURL });
+        let newTooth = await new Tooth({ name: req.body.name, description: req.body.description, imageURL: req.body.imageURL });
         newTooth.save();
         res.redirect('/teeth/gallery');
 
@@ -42,6 +49,7 @@ router.post('/add-tooth', async (req, res) => {
             .redirect('/teeth/gallery/add-tooth');
     }
 });
+
 
 /*
 //Edit fact
