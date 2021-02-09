@@ -1,19 +1,40 @@
 const User = require('../models/createUser');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 let saltRounds = 10;
+let secret = 'beStrong'
 
 const register = async ({ username, password }) => {
     try {
         let salt = await bcrypt.genSalt(saltRounds);
         let hashPass = await bcrypt.hash(password, salt);
         let user = new User({ username, password: hashPass });
-        return await  user.save();
-    } catch(erroe){
+        await user.save();
+        console.log('saved')
+        return;
+    } catch (erroe) {
         error.message = 'Process failed! Try again!'
     }
 };
 
+const login = async ({ username, password }) => {
+    try {
+        let user = await User.findOne({ username: username });
+        if (!user) { throw { message: 'No user with this username ot password' } };
+
+        let isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) { throw { message: 'Wrong password!' } };
+        let token = jwt.sign({ _id: user._id },secret);
+        return token;
+
+    } catch (error) {
+        error.message = 'Wrong password!'
+    }
+}
+
 module.exports = {
-    register
+    register,
+    login
 };

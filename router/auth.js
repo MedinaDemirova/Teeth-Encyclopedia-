@@ -9,23 +9,36 @@ router.get('/logIn', (req, res) => {
 });
 
 
+router.post('/logIn', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        let token = await authService.login(req.body);
+       res.cookie('USER_SESSION', token);
+        res.redirect('/');
+      
+    } catch (error) {
+        res.render('login', { error })
+    }
+});
+
 //Register
 router.get('/register', (req, res) => {
     res.render('register')
 });
 
 router.post('/register', async (req, res) => {
-    let {password, passwordRepeat} = req.body;
-    if (password !== passwordRepeat){
-        res.render('register',{error:{message: 'Passwords does not match!'}});
+    let { password, passwordRepeat } = req.body;
+    if (password !== passwordRepeat) {
+        res.render('register', { error: { message: 'Passwords does not match!' } });
         return;
     }
 
     try {
-        let result  = await authService.register(req.body);
-        res.redirect ('/')
-    } catch(error){
-        res.render('register',{error});
+        let result = await authService.register(req.body);
+        console.log(result)
+        res.redirect('/auth/login')
+    } catch (error) {
+        res.render('register', { error });
         return;
     }
 })
