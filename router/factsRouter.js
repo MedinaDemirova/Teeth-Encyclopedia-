@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Fact = require('../models/createFact')
+const Fact = require('../models/createFact');
+const isAuthenticated = require ('../middlewares/isAuthenticated');
 
 //FACTS Home
 router.get('/', async (req, res) => {
@@ -15,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 //Create fact
-router.get('/create-fact', (req, res) => {
+router.get('/create-fact',isAuthenticated, (req, res) => {
     res.render('create-fact');
 });
 

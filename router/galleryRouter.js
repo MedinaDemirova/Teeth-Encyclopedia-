@@ -9,10 +9,14 @@ router.get('/', async (req, res) => {
         searchOptions.name = new RegExp(req.query.name, 'i')
     }
     try {
+        //let isAdmin = req.user.admin;
+        //console.log ( isAdmin)
         let teeth = await Tooth.find(searchOptions).lean();
         res.render('teethGallery', {
             teeth: teeth,
-            searchOptions: req.query
+         //   isAdmin: isAdmin,
+            searchOptions: req.query,
+          
         })
     } catch{
         res
@@ -70,7 +74,7 @@ router.put('/:id/edit', async (req, res) => {
         req.tooth = await Tooth.findById(req.params.id);
         req.tooth.name = req.body.name;
         req.tooth.description = req.body.description;
-        req.tooth.imageURL= req.body.imageURL;
+        req.tooth.imageURL = req.body.imageURL;
         await req.tooth.save();
         res.redirect(`/teeth/gallery/${id}`);
     } catch  {

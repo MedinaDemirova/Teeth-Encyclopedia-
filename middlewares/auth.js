@@ -7,9 +7,11 @@ module.exports = function () {
         if (token) {
             jwt.verify(token, secret, function (err, decoded) {
                 if (err) {
-                    console.log(err)
-                };
-                console.log (decoded);
+                    res.clearCookie(tokenName);
+                }else{
+                    req.user = decoded ;
+                }
+               
             })
         }
         next()

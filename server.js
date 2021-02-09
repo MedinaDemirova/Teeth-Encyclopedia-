@@ -11,6 +11,8 @@ const path = require('path');
 const PORT =process.env.PORT || 5005;
 const auth = require ('./middlewares/auth');
 const cookieParser = require ('cookie-parser');
+const isGuest = require('./middlewares/isGuest');
+const isAuthenticated = require ('./middlewares/isAuthenticated');
 
 //Mongo DB Atlass Setup
 const MongoClient = require('mongodb').MongoClient;
@@ -45,8 +47,8 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => {
     res.render('homepage')
 });
-app.use ('/auth', authRoute);
-app.use('/personal', personalRoute);
+app.use ('/auth',isGuest, authRoute);
+app.use('/personal',isAuthenticated, personalRoute);
 app.use('/teeth', teethRoute);
 
 
