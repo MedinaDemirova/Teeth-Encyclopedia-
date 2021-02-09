@@ -3,6 +3,7 @@ const app = express();
 const handlebars = require('express-handlebars');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const authRoute = require ('./router/auth')
 const personalRoute = require('./router/personal');
 const teethRoute = require('./router/teeth');
 const methodOverride = require('method-override');
@@ -39,6 +40,7 @@ app.get('/', (req, res) => {
     res.render('homepage')
 });
 
+app.use ('/auth', authRoute);
 app.use('/personal', personalRoute);
 app.use('/teeth', teethRoute);
 

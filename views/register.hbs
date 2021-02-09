@@ -1,0 +1,27 @@
+<form action="/auth/register" method="POST">
+    <div class="container">
+        <h1>Register</h1>
+        <p>Please fill in this form to create an account.</p>
+        {{#if error}}
+        <span>{{error.message}}</span><br>
+        {{/if}}
+        <hr>
+
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+        <label for="passwordRepeat"><b>Repeat Password</b></label>
+        <input type="password" placeholder="Repeat Password" name="passwordRepeat" id="passwordRepeat" required>
+        <hr>
+
+
+        <button type="submit">Register</button>
+    </div>
+
+    <div class="container signin"> <br>
+        <p>Already have an account? <a href="/auth/login">Sign in</a>.</p>
+    </div>
+</form>
