@@ -1,10 +1,8 @@
 const User = require('../models/createUser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { secret, saltRounds, isAdmin } = require('../secrets/auth')
 
-
-let saltRounds = 10;
-let secret = 'beStrong'
 
 const register = async ({ username, password }) => {
     try {
@@ -26,7 +24,8 @@ const login = async ({ username, password }) => {
 
         let isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) { throw { message: 'Wrong password!' } };
-        let token = jwt.sign({ _id: user._id },secret);
+
+        let token = jwt.sign({ _id: user._id, name: username, admin: isAdmin }, secret);
         return token;
 
     } catch (error) {

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authService = require('../serveses/authService');
-
+const {tokenName } = require('../secrets/auth')
 
 //Log in
 router.get('/logIn', (req, res) => {
@@ -13,7 +13,7 @@ router.post('/logIn', async (req, res) => {
     const { username, password } = req.body;
     try {
         let token = await authService.login(req.body);
-       res.cookie('USER_SESSION', token);
+       res.cookie(tokenName, token);
         res.redirect('/');
       
     } catch (error) {

@@ -8,8 +8,9 @@ const personalRoute = require('./router/personal');
 const teethRoute = require('./router/teeth');
 const methodOverride = require('method-override');
 const path = require('path');
-const fs = require('fs')
 const PORT =process.env.PORT || 5005;
+const auth = require ('./middlewares/auth');
+const cookieParser = require ('cookie-parser');
 
 //Mongo DB Atlass Setup
 const MongoClient = require('mongodb').MongoClient;
@@ -26,7 +27,11 @@ app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
+
+app.use (cookieParser());
+
+app.use (auth());
 
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, usecCeateIndex: true });
 
@@ -36,10 +41,10 @@ app.set('view engine', '.hbs');
 
 app.use(express.urlencoded({ extended: false }));
 
+//Routes
 app.get('/', (req, res) => {
     res.render('homepage')
 });
-
 app.use ('/auth', authRoute);
 app.use('/personal', personalRoute);
 app.use('/teeth', teethRoute);
