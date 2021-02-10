@@ -7,7 +7,11 @@ const isAuthenticated = require('../middlewares/isAuthenticated');
 router.get('/', async (req, res) => {
     try {
         let facts = await Fact.find({}).sort({ createdAt: 'desc' }).lean();
-
+        facts.forEach(fact => {
+            if (fact.creatorID == req.user._id || req.app.locals.user.admin){
+                fact.iAmCreator = true;
+            };
+        });
         res.render('facts', { facts: facts });
     } catch{
         res
