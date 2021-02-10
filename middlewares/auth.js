@@ -12,9 +12,9 @@ module.exports = function () {
                     req.user = decoded ;
                     console.log (decoded)
                     res.locals.user = decoded; 
-                    res.locals.isAuthenticated = true;
-                    res.locals.isAdmin = decoded.admin;
-
+                    res.locals.user.isAuthenticated = true;
+                    res.locals.user.isAdmin = decoded.admin;
+                    console.log (res.locals)
                 }
                
             })

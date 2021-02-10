@@ -1,6 +1,7 @@
 <h1>INTERESTING FACTS ABOUT HUMAN TEETH</h1>
+{{#if user.isAuthenticated}}
 <a href="/teeth/facts/create-fact" class="btn ">Add a fact..</a>
-
+{{/if}}
 
 {{#each facts}}
 <div class="container" style=" box-shadow: 0 0 10px rgb(3, 66, 3);">
@@ -10,13 +11,14 @@
             <div class="card-subtitle text-muted mb-2">{{createdAt}}</div>
             <div class="card-text mb-2">{{content}}</div>
             <br>
-          
+          {{#if user.isAuthenticated}}
             <form action="/teeth/facts/edit/{{_id}}?_method=DELETE" method="POST" style="display: inline;">
                 <a href="/teeth/facts/edit/{{_id}}" class="btn btn-info">Edit</a></form>
 
             <form action="/teeth/facts/{{_id}}?_method=DELETE" method="POST" style="display: inline; ">
                 <button type="submit" class="btn btn-danger">Delete</button></form>
            
+           {{/if}}
         </div>
     </div>
     <br>

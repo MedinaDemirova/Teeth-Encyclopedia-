@@ -15,7 +15,7 @@
         <a href="/teeth/" class="btn ">Learn about human teeth</a>
         <a href="/teeth/gallery" class="btn ">Gallery</a>
         <a href="/teeth/facts" class="btn ">Interesting facts</a>
-        {{#if isAuthenticated}}
+        {{#if user.isAuthenticated}}
         <a href="/auth/logout" class="btn ">Log out </a>
         {{else}}
         <a href="/auth/login" class="btn ">Log in </a>

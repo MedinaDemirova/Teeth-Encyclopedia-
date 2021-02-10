@@ -4,6 +4,7 @@ const authService = require('../serveses/authService');
 const {tokenName } = require('../secrets/auth');
 const isGuest = require('../middlewares/isGuest');
 const isAuthenticated = require('../middlewares/isAuthenticated');
+const auth = require('../middlewares/auth');
 
 //Log in
 router.get('/logIn',isGuest, (req, res) => {

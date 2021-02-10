@@ -32,8 +32,6 @@ app.use(methodOverride('_method'));
 
 app.use (cookieParser());
 
-app.use (auth());
-
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, usecCeateIndex: true });
 
 app.engine('.hbs', handlebars({ extname: '.hbs' }));
@@ -41,6 +39,8 @@ app.engine('.hbs', handlebars({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
 
 app.use(express.urlencoded({ extended: false }));
+
+app.use (auth());
 
 //Routes
 app.get('/', (req, res) => {
