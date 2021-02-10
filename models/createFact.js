@@ -16,6 +16,10 @@ const factSchema = new mongoose.Schema({
         type: Date,
         default: () => Date.now()
     },
+    creatorID:{
+        type: String,
+        required:true
+    }
 });
 
 const factModel = mongoose.model('Fact', factSchema);

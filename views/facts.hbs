@@ -1,6 +1,8 @@
 <h1>INTERESTING FACTS ABOUT HUMAN TEETH</h1>
 {{#if user.isAuthenticated}}
 <a href="/teeth/facts/create-fact" class="btn ">Add a fact..</a>
+{{else}}
+<a href="/auth/login" class="btn ">Log in to Add a fact..</a>
 {{/if}}
 
 {{#each facts}}
@@ -15,7 +17,7 @@
             <form action="/teeth/facts/edit/{{_id}}?_method=DELETE" method="POST" style="display: inline;">
                 <a href="/teeth/facts/edit/{{_id}}" class="btn btn-info">Edit</a></form>
 
-            <form action="/teeth/facts/{{_id}}?_method=DELETE" method="POST" style="display: inline; ">
+            <form action="/teeth/facts/{{_id}}" method="POST" style="display: inline; ">
                 <button type="submit" class="btn btn-danger">Delete</button></form>
            
            {{/if}}
