@@ -48,7 +48,9 @@ router.post('/register',isGuest, async (req, res) => {
 //Log Out
 
 router.get ('/logout',isAuthenticated, (req,res)=>{
+    req.app.locals = {};
     res.clearCookie(tokenName);
+    
     res.redirect('/');
 });
 

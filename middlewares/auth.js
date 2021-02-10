@@ -11,10 +11,10 @@ module.exports = function () {
                 }else{
                     req.user = decoded ;
                     console.log (decoded)
-                    res.locals.user = decoded; 
-                    res.locals.user.isAuthenticated = true;
-                    res.locals.user.isAdmin = decoded.admin;
-                    console.log (res.locals)
+                    req.app.locals.user = decoded; 
+                    req.app.locals.user.isAuthenticated = true;
+                    req.app.locals.user.isAdmin = decoded.admin;
+                    console.log (req.app.locals)
                 }
                
             })

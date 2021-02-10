@@ -11,7 +11,7 @@
             <div class="card-subtitle text-muted mb-2">{{createdAt}}</div>
             <div class="card-text mb-2">{{content}}</div>
             <br>
-          {{#if user.isAuthenticated}}
+          {{#if @root.user.isAuthenticated}}
             <form action="/teeth/facts/edit/{{_id}}?_method=DELETE" method="POST" style="display: inline;">
                 <a href="/teeth/facts/edit/{{_id}}" class="btn btn-info">Edit</a></form>
 
