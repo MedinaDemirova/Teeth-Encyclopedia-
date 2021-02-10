@@ -20,11 +20,13 @@
     <p class="name">{{name}}</p>
     <a class="btn" href="/teeth/gallery/show/{{_id}}">Read more</a>
 
+    {{#if isAdmin}}
     <form action="/teeth/gallery/{{_id}}/edit?_method=DELETE" method="POST" style="display: inline;">
         <a href="/teeth/gallery/{{_id}}/edit" class="btn btn-info">Edit</a></form>
 
     <form action="/teeth/gallery/{{_id}}?_method=DELETE" method="POST" style="display: inline; ">
         <button type="submit" class="btn btn-danger">Delete</button></form>
+    {{/if}}
 
 </div>
 {{/each}}

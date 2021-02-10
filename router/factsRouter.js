@@ -20,7 +20,7 @@ router.get('/create-fact',isAuthenticated, (req, res) => {
     res.render('create-fact');
 });
 
-router.post('/create-fact', async (req, res) => {
+router.post('/create-fact',isAuthenticated, async (req, res) => {
     try {
         let newFact = await new Fact({ creator: req.body.creator, content: req.body.content });
         newFact.save();

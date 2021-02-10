@@ -10,6 +10,11 @@ module.exports = function () {
                     res.clearCookie(tokenName);
                 }else{
                     req.user = decoded ;
+                    console.log (decoded)
+                    res.locals.user = decoded; 
+                    res.locals.isAuthenticated = true;
+                    res.locals.isAdmin = decoded.admin;
+
                 }
                
             })

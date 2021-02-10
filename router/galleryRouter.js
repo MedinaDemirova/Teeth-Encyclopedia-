@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Tooth = require('../models/addTooth');
+const isAdmin = require ('../middlewares/isAdmin');
 
 //Teeth Gallery Home and Search 
 router.get('/', async (req, res) => {
@@ -37,7 +38,7 @@ router.get('/show/:id', async (req, res) => {
 });
 
 //Create tooth
-router.get('/add-tooth', (req, res) => {
+router.get('/add-tooth',isAdmin, (req, res) => {
     res.render('add-tooth');
 });
 
@@ -57,7 +58,7 @@ router.post('/add-tooth', async (req, res) => {
 
 
 //Edit tooth
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit',isAdmin, async (req, res) => {
     let id = req.params.id;
     try {
         let tooth = await Tooth.findById(req.params.id).lean();
@@ -69,7 +70,7 @@ router.get('/:id/edit', async (req, res) => {
     }
 });
 
-router.put('/:id/edit', async (req, res) => {
+router.put('/:id/edit',isAdmin, async (req, res) => {
     try {
         req.tooth = await Tooth.findById(req.params.id);
         req.tooth.name = req.body.name;
@@ -86,7 +87,7 @@ router.put('/:id/edit', async (req, res) => {
 
 
 //Delete tooth
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',isAdmin, async (req, res) => {
     await Tooth.findByIdAndDelete(req.params.id);
     res.redirect('/teeth/gallery');
 });

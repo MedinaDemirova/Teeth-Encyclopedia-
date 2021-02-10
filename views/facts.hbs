@@ -10,12 +10,13 @@
             <div class="card-subtitle text-muted mb-2">{{createdAt}}</div>
             <div class="card-text mb-2">{{content}}</div>
             <br>
-
+          
             <form action="/teeth/facts/edit/{{_id}}?_method=DELETE" method="POST" style="display: inline;">
                 <a href="/teeth/facts/edit/{{_id}}" class="btn btn-info">Edit</a></form>
 
             <form action="/teeth/facts/{{_id}}?_method=DELETE" method="POST" style="display: inline; ">
                 <button type="submit" class="btn btn-danger">Delete</button></form>
+           
         </div>
     </div>
     <br>
