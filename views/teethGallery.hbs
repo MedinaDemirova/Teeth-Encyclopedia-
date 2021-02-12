@@ -1,20 +1,20 @@
-<h2>Teeth galley</h2><br>
+<h2>Teeth gallery</h2><br>
 {{#if user.isAdmin}}
 <a href="/teeth/gallery/add-tooth" class="btn ">Add a tooth..</a> <br>
 {{/if}}
 <form action="/teeth/gallery" method="GET">
     <input type="text" name="name" value="{{searchOption.name}}">
     <button type="submit">Search</button>
-</form>
+</form> <br>
 
 {{#each teeth}}
-<div style=" display: inline-block;
+<div  style= "display: inline-block;
     border: 1px solid #2b415433;
     background: white;
     width: 23%;
-    size: height: 3000px;
-    width: 300px ;
-    vertical-align: top;">
+    height: 200px;
+    width: 200px ;
+    vertical-align: top; ">
     <img class="img" src={{imageURL}}>
     <p class="name">{{name}}</p>
     <a class="btn" href="/teeth/gallery/show/{{_id}}">Read more</a>
