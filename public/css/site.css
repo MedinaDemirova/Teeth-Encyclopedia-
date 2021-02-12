@@ -1,0 +1,35 @@
+html, body {
+    background-color: whitesmoke;
+    height: 100%;
+}
+img {
+    height: 100px;
+    width: 100px ; 
+    display: block;
+    margin:  auto;
+    text-align: center"
+}
+header {
+    list-style-type: none;
+    margin: auto;
+    padding: 0;
+    background-color: #b8cfe4;
+}
+header ul li {
+    display: inline-block;
+    vertical-align: middle;
+}
+header ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    margin: 0 1em;
+}
+footer {
+    background: #87a4be;
+    padding: 1em;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}

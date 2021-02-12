@@ -4,13 +4,11 @@ const toothSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minlength: 3
     },
  
     description: {
         type: String,
         minlength: 30,
-        required: true
 
     },
     imageURL: {

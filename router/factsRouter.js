@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     try {
         let facts = await Fact.find({}).sort({ createdAt: 'desc' }).lean();
         facts.forEach(fact => {
+            fact.createdAt = fact.createdAt.toUTCString();
             if (fact.creatorID == req.user._id || req.app.locals.user.admin){
                 fact.iAmCreator = true;
             };
