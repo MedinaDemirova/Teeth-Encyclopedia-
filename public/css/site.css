@@ -15,21 +15,29 @@ header {
     padding: 0;
     background-color: #b8cfe4;
 }
-header ul li {
-    display: inline-block;
-    vertical-align: middle;
-}
-header ul li a {
-    text-decoration: none;
-    text-transform: uppercase;
-    color: white;
-    font-weight: bold;
-    margin: 0 1em;
-}
+
+   
+
 footer {
     background: #87a4be;
     padding: 1em;
     text-align: center;
     color: white;
     font-size: 20px;
+}
+span.error {
+    animation: fadeOut 1s forwards;
+    animation-delay: 2s;
+    background: rgb(230, 59, 37);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: normal;
+    position: relative;
+    float: right;
+    margin-top: 20px;
+    overflow: hidden;
+    display: block;
 }

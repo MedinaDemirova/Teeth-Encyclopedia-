@@ -14,27 +14,37 @@
 
 <body>
     <header class="header">
-        <div class="header ul li">
+        <div>
             <a href="/personal/my-cv" class="btn ">My CV </a>
             <a href="/" class="btn ">Home </a>
             <a href="/teeth/" class="btn ">Learn about human teeth</a>
             <a href="/teeth/gallery" class="btn ">Gallery</a>
             <a href="/teeth/facts" class="btn ">Interesting facts</a>
 
-    
+
             {{#if user.isAuthenticated}}
-            <a href="/auth/logout" class="btn ">Log out </a>
-            <span>Hello, {{user.name}}!</span>
-            {{else}}
-            <a href="/auth/login" class="btn ">Log in </a>
-            <a href="/auth/register" class="btn ">Register </a>
+            <a href="/auth/logout" class="btn pull-right">Log out </a>
+            <div class="pull-right ">
+                <h5>Hello, {{user.name}}!</h5>
+            </div>
+             {{#if user.isAdmin}}
+            <div class="pull-right ">
+                <h6 style="color:red">  admin_  </h6>
+            </div>
             {{/if}}
+
+            {{else}}
+            <a href="/auth/login" class="btn pull-right">Log in </a>
+            <a href="/auth/register" class="btn pull-right ">Register </a>
+            {{/if}}
+
+
         </div>
     </header>
 
     {{#if error}}
     <div>
-        <span style="color: red; ">{{error.message}}</span>
+        <span class="error">{{error.message}}</span>
     </div>
     {{/if}}
     {{{body}}}
