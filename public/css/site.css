@@ -39,14 +39,18 @@ font-family: "Verdana",sans-serif;
    
 .tooth{
     display: inline-block;
-    border: 1px solid #2b415433;
-    background: white;
-    width: 23%;
-    height: 300px;
-    width: 300px ;
-    vertical-align: top;
+    border: 1px solid #29507233;
+    box-shadow: 0 0 10px rgb(38, 107, 134);
+    margin-bottom:1%;
+    margin: 0.5%;
+    height: 200px; 
+    width: 200px ;
 }
 
+.container-facts{
+    box-shadow: 0 0 10px rgb(38, 107, 134);
+    margin: 1%;
+}
 
 span.error {
     animation: fadeOut 1s forwards;
