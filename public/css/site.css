@@ -15,11 +15,18 @@ header {
     list-style-type: none;
     margin: auto;
     padding: 0;
-    background-color: #cad3db;
+    background-color: #dfe4f3;
 }
 header ul li {
     display: inline-block;
     vertical-align: middle;
+    
+}
+
+.headermain {
+color: rgb(24, 68, 97);
+font-family: "Verdana",sans-serif;
+
 }
    
 tooth{
