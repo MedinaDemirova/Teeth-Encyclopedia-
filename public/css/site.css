@@ -15,7 +15,7 @@ header {
     list-style-type: none;
     margin: auto;
     padding: 0;
-    background-color: #dfe4f3;
+    background-color: rgb(231, 241, 245)
 }
 header ul li {
     display: inline-block;
@@ -29,7 +29,7 @@ font-family: "Verdana",sans-serif;
 
 }
    
-tooth{
+.tooth{
     display: inline-block;
     border: 1px solid #2b415433;
     background: white;
