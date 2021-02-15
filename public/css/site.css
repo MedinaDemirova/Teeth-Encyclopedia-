@@ -9,7 +9,7 @@ html, body {
 .main-body{
     margin-left:  5%;
     margin-right: 5%;
-    margin-top: 3%;
+    margin-top: 1%;
     margin-bottom: 3%;
 }
 img {
@@ -43,8 +43,8 @@ font-family: "Verdana",sans-serif;
     box-shadow: 0 0 10px rgb(38, 107, 134);
     margin-bottom:1%;
     margin: 0.5%;
-    height: 200px; 
-    width: 200px ;
+    height: 250px; 
+    width: 250px ;
 }
 
 .container-facts{

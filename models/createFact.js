@@ -1,34 +1,25 @@
 const mongoose = require('mongoose');
-const { english_letters_numbers_pattern, english_letters_pattern } = require('../secrets/auth');
+const { name_pattern } = require('../secrets/auth');
 
 const factSchema = new mongoose.Schema({
     creator: {
         type: String,
-        required: true,
-        minlength: 3,
-        validate: {
-            validator: (value) => {
-                return english_letters_pattern.test(value)
-            },
-            message: (props) => {
-                return `Creator name must contains only english letters!`
-            }
+        required:[true, 'Creator field is requred!'],
+        minlength: [3, 'Creator name must be at least 3 symbols!'],
+     validate:{
+        validator: (value) => {
+            return name_pattern .test(value)
+        },
+        message: (props) => { 
+             return `${props.value} is invalid username! Username must contain only english letters!`
         }
+     }
     },
     content: {
         type: String,
-        minlength: 20,
-        required: true,
-        validate: {
-            validator: (value) => {
-                return english_letters_numbers_pattern.test(value)
-            },
-            message: (props) => {
-                return `Creator name must contains only english letters and numbers!`
-            }
-        }
-
-    },
+        minlength: [20,'Content must be minimum 20 characters long!'],
+        required: [true, 'Content field is requred!']
+,    },
     createdAt: {
         type: Date,
         default: () => Date.now()
@@ -38,6 +29,12 @@ const factSchema = new mongoose.Schema({
         required: true
     }
 });
+
+factSchema.pre("save", function(){
+    this.creator = this.creator.toUpperCase()
+});
+
+
 
 const factModel = mongoose.model('Fact', factSchema);
 

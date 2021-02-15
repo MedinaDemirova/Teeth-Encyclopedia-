@@ -5,16 +5,19 @@ const isAuthenticated = require('../middlewares/isAuthenticated');
 
 //FACTS Home
 router.get('/', async (req, res) => {
+    const user = req.user;
     try {
         let facts = await Fact.find({}).sort({ createdAt: 'desc' }).lean();
         facts.forEach(fact => {
             fact.createdAt = fact.createdAt.toUTCString();
-            if (fact.creatorID == req.user._id || req.app.locals.user.admin){
-                fact.iAmCreator = true;
-            };
-        });
+            if (user) {
+                if (fact.creatorID == user._id || req.app.locals.user.admin) { fact.iAmCreator = true }
+            }
+        })
+
         res.render('facts', { facts: facts });
-    } catch{
+    } catch (err) {
+        console.log(err)
         res
             .status(400, 'A required action was not successful! Try again!')
             .redirect('/teeth');
@@ -29,16 +32,12 @@ router.get('/create-fact', isAuthenticated, (req, res) => {
 router.post('/create-fact', isAuthenticated, async (req, res) => {
     try {
         let newFact = await new Fact({ creator: req.body.creator, content: req.body.content, creatorID: req.app.locals.user._id });
-        newFact.save();
+        await newFact.save();
         res.redirect('/teeth/facts');
-    } catch  {
-        res
-            .status(400, 'A required action was not successful! Try again!')
-            .redirect('/teeth/facts/ctreate-fact');
+    } catch (err) {
+        res.render('create-fact', { error: { message: err } });
     }
 });
-//To DO : make sure that only creator can edit and delete  fact
-
 
 //Edit fact
 router.get('/edit/:id', async (req, res) => {
@@ -49,10 +48,8 @@ router.get('/edit/:id', async (req, res) => {
 
         res.render('edit-fact', { fact })
 
-    } catch {
-        res
-            .status(400, 'A required action was not successful! Try again!')
-            .redirect('/teeth/facts');
+    } catch (err) {
+        res.render('edit-fact', { error: { message: err } });
     }
 });
 
@@ -60,15 +57,13 @@ router.put('/edit/:id', async (req, res) => {
 
     try {
         req.fact = await Fact.findById(req.params.id);
-        if (fact.creatorID != req.user._id  && !req.app.locals.admin) res.redirect('/teeth/facts');
+        if (req.fact.creatorID != req.user._id && !req.app.locals.admin) res.redirect('/teeth/facts');
         req.fact.creator = req.body.creator;
         req.fact.content = req.body.content;
         await req.fact.save();
         res.redirect('/teeth/facts');
-    } catch  {
-        res
-            .status(400, 'A required action was not successful! Try again!')
-            .redirect('/teeth/facts');
+    } catch (err) {
+        res.render('edit-fact', { error: { message: err } });
     }
 });
 
