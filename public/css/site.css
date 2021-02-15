@@ -47,6 +47,11 @@ font-family: "Verdana",sans-serif;
     width: 250px ;
 }
 
+.img{
+    height: 250px; 
+    width: 350px ;
+}
+
 .container-facts{
     box-shadow: 0 0 10px rgb(38, 107, 134);
     margin: 1%;

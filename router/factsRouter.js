@@ -17,9 +17,8 @@ router.get('/', async (req, res) => {
 
         res.render('facts', { facts: facts });
     } catch (err) {
-        console.log(err)
         res
-            .status(400, 'A required action was not successful! Try again!')
+            .status(400, 'Sorry , required action was not successful! Try again!')
             .redirect('/teeth');
     }
 });
