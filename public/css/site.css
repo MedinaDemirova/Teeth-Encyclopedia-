@@ -1,9 +1,37 @@
+
 html, body {
     background-image: url("../images/17395.jpg");
     background-size: cover;
     height: 100%;
     padding-bottom: 70px;
     
+}
+
+.admin{
+    color:red;
+}
+
+.site-name{
+     text-align: right;
+}
+
+.btn-back{
+    height: 100px;
+    width: 100px ; display: block;
+    margin:  auto;
+    text-align: center;
+}
+
+.name{
+text-align: center;
+}
+
+.tooth-container{
+ box-shadow: 0 0 10px rgb(3, 66, 3);
+}
+
+.cv{
+color:rgb(68, 5, 68);
 }
 
 .main-body{
@@ -47,7 +75,7 @@ font-family: "Verdana",sans-serif;
     width: 250px ;
 }
 
-.img{
+.image-sec{
     height: 250px; 
     width: 350px ;
 }

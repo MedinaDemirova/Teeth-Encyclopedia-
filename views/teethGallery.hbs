@@ -10,7 +10,7 @@
 {{#each teeth}}
 <div class= "tooth" ><br>
     <img class="img" src={{imageURL}}><br>
-    <p class="name" style ="text-align: center">{{name}}</p>
+    <p class="name" >{{name}}</p>
     <a class="btn" href="/teeth/gallery/show/{{_id}}">Read more</a>
 
     {{#if @root.user.isAdmin}}
