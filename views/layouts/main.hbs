@@ -15,15 +15,15 @@
 <body>
     <header class="header">
         <div>
-            <a href="/personal/my-cv" class="btn cv">My CV </a>
-            <a href="/" class="btn ">Home </a>
-            <a href="/teeth/" class="btn ">Learn about human teeth</a>
-            <a href="/teeth/gallery" class="btn ">Gallery</a>
-            <a href="/teeth/facts" class="btn ">Interesting facts</a>
+            <a href="/personal/my-cv" class="btn cv header-btn">My CV </a>
+            <a href="/" class="btn header-btn">Home </a>
+            <a href="/teeth/" class="btn header-btn ">Learn about human teeth</a>
+            <a href="/teeth/gallery" class="btn header-btn ">Gallery</a>
+            <a href="/teeth/facts" class="btn header-btn ">Interesting facts</a>
 
 
             {{#if user.isAuthenticated}}
-            <a href="/auth/logout" class="btn pull-right">Log out </a>
+            <a href="/auth/logout" class="btn pull-right header-btn">Log out </a>
             <div class="pull-right ">
                 <h5>Hello, {{user.name}}!</h5>
             </div>
@@ -34,8 +34,8 @@
             {{/if}}
 
             {{else}}
-            <a href="/auth/login" class="btn pull-right">Log in </a>
-            <a href="/auth/register" class="btn pull-right ">Register </a>
+            <a href="/auth/login" class="btn pull-right header-btn">Log in </a>
+            <a href="/auth/register" class="btn pull-right header-btn">Register </a>
             {{/if}}
 
 

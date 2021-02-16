@@ -4,8 +4,15 @@ html, body {
     background-size: cover;
     height: 100%;
     padding-bottom: 70px;
-    
 }
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 
 .admin{
     color:red;
@@ -16,10 +23,12 @@ html, body {
 }
 
 .btn-back{
-    height: 100px;
-    width: 100px ; display: block;
-    margin:  auto;
+    
+    display: block;
     text-align: center;
+    font-size: 20px;
+    margin: 10px;
+    
 }
 
 .name{
@@ -53,6 +62,12 @@ header {
     padding: 0;
     background-color: rgb(231, 241, 245)
 }
+
+.header-btn{
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
 header ul li {
     display: inline-block;
     vertical-align: middle;
@@ -80,6 +95,14 @@ font-family: "Verdana",sans-serif;
     width: 350px ;
 }
 
+.image-third{
+    height: 250px; 
+    width: 250px ;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #03294933;
+}
+
 .container-facts{
     box-shadow: 0 0 10px rgb(38, 107, 134);
     margin: 1%;
@@ -102,12 +125,7 @@ span.error {
     display: block;
 }
 
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+
 
 .footer {
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("http://andreeabunget.co.uk/Img/footer.jpg");
