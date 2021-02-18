@@ -1,5 +1,6 @@
 const mongoose = require ('mongoose');
-const {URI_Atlass} = require ('../secrets/auth')
+const {URI_Atlass} = require ('../secrets/auth');
+const mongoSanitize = require('express-mongo-sanitize');
 
 //Mongo DB Atlass Setup
 const MongoClient = require('mongodb').MongoClient;
