@@ -74,7 +74,7 @@ router.post('/:id', async (req, res) => {
     } else {
         await Fact.findByIdAndDelete(req.params.id);
     }
-
+ 
     res.redirect('/teeth/facts');
 });
 
