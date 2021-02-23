@@ -1,7 +1,7 @@
 const User = require('../models/createUser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { secret, saltRounds, isAdmin } = require('../secrets/auth')
+const { secret, saltRounds } = require('../secrets/auth')
 
 
 const register = async ({ username, password }) => {
