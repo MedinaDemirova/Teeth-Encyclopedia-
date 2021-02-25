@@ -20,17 +20,23 @@
             <a href="/teeth/" class="btn header-btn ">Learn about human teeth</a>
             <a href="/teeth/gallery" class="btn header-btn ">Gallery</a>
             <a href="/teeth/facts" class="btn header-btn ">Interesting facts</a>
+            <a href="/e-shop" class="btn header-btn btn-shop ">Shop Now</a>
 
 
             {{#if user.isAuthenticated}}
+           
             <a href="/auth/logout" class="btn pull-right header-btn">Log out </a>
             <div class="pull-right ">
-                <h5>Hello, {{user.name}}!</h5>
+                <h5> Hello, {{user.name}}! </h5>
             </div>
             {{#if user.isAdmin}}
             <div class="pull-right ">
                 <h6 class="admin"> admin_ </h6>
-            </div>
+            </div> 
+            <a class="btn pull-right header-btn btn-shop"  href="/e-shop/orders"> Orders to complete </a>
+            <a class="btn pull-right header-btn btn-shop"  href="/e-shop/add-product"> Add new product </a>
+            {{else}}
+              <a class="btn pull-right header-btn btn-shop"  href="/e-shop/mybasket"> - My card -</a>
             {{/if}}
 
             {{else}}

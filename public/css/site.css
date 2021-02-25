@@ -14,6 +14,7 @@ html, body {
 }
 
 
+
 .admin{
     color:red;
 }
@@ -43,10 +44,20 @@ text-align: center;
 color:rgb(68, 5, 68);
 }
 
+.col-lg-3{
+ background-image: url("https://www.cheatsheet.com/wp-content/uploads/2017/08/Toothbrushes.jpg?x23912");
+ background-size: cover;
+ 
+}
+.btn-shop{
+    color: orange;
+    font-family: Comic Sans MS, Comic Sans, cursive
+}
+
 .main-body{
     margin-left:  5%;
     margin-right: 5%;
-    margin-top: 1%;
+    margin-top: 3%;
     margin-bottom: 3%;
 }
 img {
@@ -93,6 +104,13 @@ font-family: "Verdana",sans-serif;
 .image-sec{
     height: 250px; 
     width: 350px ;
+}
+
+.my-4{
+    font-family: comic;
+    font-style: bold;
+    color:rgb(4, 62, 138);
+    font-size: 400%
 }
 
 .image-third{
