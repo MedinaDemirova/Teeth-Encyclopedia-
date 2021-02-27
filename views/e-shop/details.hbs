@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 class="headermain">{{product.name}}</h1>
+    <div class="product">
+        <div class="product-left">
+            <h4>{{product.category}}</h4>
+            <img class="image-product" src="{{product.imageURL}}">
+            <p class="price-product">Price: {{product.price}} EU</p>
+            <a class="btn-back" href="/e-shop/{{product.slug}}/add-to-basket" class="btn btn-info">Add to basket</a>
+            <a class="btn-back" href="/e-shop" class="btn btn-info">Back</a>
+        </div>
+        <p class="description-product">{{product.description}}</p>
+        <p class="reviews">Likes: {{product.likes.length}}</p>
+        <p class="reviews">Comments: {{product.comments.length}}</p>
+
+      
+    </div>
+</div>

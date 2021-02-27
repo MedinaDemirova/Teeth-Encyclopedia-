@@ -33,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.11.14",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "slugify": "^1.4.7"
   }
 }

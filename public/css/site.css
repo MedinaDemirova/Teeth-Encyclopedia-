@@ -36,10 +36,19 @@ html, body {
 text-align: center;
 }
 
-.tooth-container{
- box-shadow: 0 0 10px rgb(3, 66, 3);
+.tooth-container ,
+.col-lg-3,
+.h-100{
+ box-shadow: 0 0 10px rgb(76, 116, 153);
 }
 
+.h-100{
+    padding: 3%;
+    margin-bottom: 8%;
+    margin-left:4%;
+    align-content: center;
+    text-align: center
+}
 .cv{
 color:rgb(68, 5, 68);
 }
@@ -67,6 +76,64 @@ img {
     margin:  auto;
     text-align: center"
 }
+.product{
+    white-space: nowrap;
+    overflow-x: auto;
+    position: relative;
+}
+
+.product-left{
+    background-color: #abcbe6;
+    display: inline-block;
+    width: 200px;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 0 10px rgb(38, 107, 134);
+    margin: 1%;
+}
+.image-product{
+    display:inline-block; 
+    width: 200px;
+    height: 200px;
+    padding: 1%;
+}
+.price-product{
+    font-family: Verdana,sans-serif,bold;
+    color: #054579;
+    font-size: 22px;
+    align-content: center;
+    text-align: center;
+    background: #37a7db
+}
+
+.description-product{
+    display: inline-block;
+    position: absolute;
+    margin: 3%;
+    width:65%;
+    white-space:normal;
+    font-size:14px;
+    align-content:center;
+    text-align: justify;
+    vertical-align: middle;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+    color: #02335a
+}
+
+.reviews{
+    display: block;
+    position: relative;
+    margin: 1%;
+    font-size:12px;
+    align-content:center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+    color: #02335a;
+    font-style: italic;
+    
+}
+
 header {
     list-style-type: none;
     margin: auto;
