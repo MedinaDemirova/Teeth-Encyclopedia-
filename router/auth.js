@@ -7,7 +7,7 @@ const isAuthenticated = require('../middlewares/isAuthenticated');
 
 //Log in
 router.get('/logIn', isGuest, (req, res) => {
-    res.render('login')
+    res.render('auth/login')
 });
 
 
@@ -18,19 +18,19 @@ router.post('/logIn', isGuest, async (req, res) => {
         res.redirect('/');
 
     } catch (error) {
-        res.render('login', { error })
+        res.render('auth/login', { error })
     }
 });
 
 //Register
 router.get('/register', isGuest, (req, res) => {
-    res.render('register')
+    res.render('auth/register')
 });
 
 router.post('/register', isGuest, async (req, res) => {
     let { password, passwordRepeat } = req.body;
     if (password !== passwordRepeat) {
-        res.render('register', { error: { message: 'Passwords does not match!' } });
+        res.render('auth/register', { error: { message: 'Passwords does not match!' } });
         return;
     }
 
@@ -39,8 +39,8 @@ router.post('/register', isGuest, async (req, res) => {
         console.log(result)
         res.redirect('/auth/login')
     } catch (error) {
-      
-        res.render('register', { error});
+
+        res.render('auth/register', { error });
         return;
     }
 });

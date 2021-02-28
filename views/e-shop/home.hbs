@@ -4,6 +4,7 @@
         <div class="col-lg-3">
             <h1 class="my-4">Oral Care Shop</h1>
             <div class="list-group">
+                <a href="/e-shop" class="list-group-item">All products</a>
                 <a href="/e-shop/categories/toothbrushes" class="list-group-item">Toothbrush</a>
                 <a href="/e-shop/categories/dentalflosses" class="list-group-item">Dental Floss </a>
                 <a href="/e-shop/categories/toothpastes" class="list-group-item">Toothpaste </a>
@@ -24,8 +25,15 @@
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Likes: {{likes.length}} Comments:{{comments.length}}</small>
+                       {{#if @root.user.isAdmin}}
+        <a href="/e-shop/{{slug}}/edit" class="btn btn-info">Edit</a>
+
+    <form action="/e-shop/{{_id}}?_method=DELETE" method="POST" style="display: inline; ">
+        <button type="submit" class="btn btn-danger">Delete</button></form>
+    {{/if}}
                 </div>
             </div>
+          
         </div>
         {{else}}
           <h3  class="description-product"> No added products in this section yet...</h3>

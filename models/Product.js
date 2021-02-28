@@ -31,7 +31,7 @@ const productSchema = new mongoose.Schema({
         required: [true, 'Image URL field is requred!']
     },
     slug: {
-        unique: true,
+        unique: false,
         required: true,
         type: String
     },
@@ -48,8 +48,9 @@ productSchema.pre('validate', function (next) {
 
 productSchema.pre("save", function () {
     this.name = this.name.toUpperCase();
-});
+    this.price = this.price.toFixed(2);
 
+});
 
 
 const productModel = mongoose.model('Product', productSchema);

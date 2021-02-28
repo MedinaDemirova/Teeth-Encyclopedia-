@@ -10,17 +10,31 @@ router.get('/', async (req, res) => {
     try {
         let products = await dataService.getAll();
         products = products.slice(0, 6);
-        products.forEach(element => { element.price = element.price.toFixed(2) });
-
         res.render('e-shop/home', { products: products });
     } catch (err) {
         res.render('e-shop/home', { error: { message: err } });
     }
 });
 
+//Details
+router.get('/:slug', isAuthenticated, async (req, res) => {
+    try {
+        let product = await dataService.getOne(req.params.slug)
+
+        res.render('e-shop/details', { product: product });
+    } catch (err) {
+        res.render('e-shop/home', { error: { message: err } });
+    }
+});
+
+
+
+//////  ADMIN ONLY  ///// 
+
 //Create product
 router.get('/create-product', isAdmin, (req, res) => {
-    res.render('e-shop/create-product')
+    console.log ('hello')
+    res.render('e-shop/create-product');
 });
 
 router.post('/create-product', isAdmin, async (req, res) => {
@@ -33,20 +47,41 @@ router.post('/create-product', isAdmin, async (req, res) => {
     }
 });
 
-//Details
-
-router.get('/:slug', isAuthenticated, async (req, res) => {
+//Edit product
+router.get('/:slug/edit', isAdmin, async (req, res) => {
     try {
         let product = await dataService.getOne(req.params.slug)
-        console.log(product)
-        res.render('e-shop/details', { product: product });
+        res.render('e-shop/edit-product', { product })
     } catch (err) {
-        res.render('e-shop/home', { error: { message: err } });
+        res
+            .redirect(`/e-shop/${req.params.slug}`), { error: { message: err } };
     }
 });
 
-//Categories
 
+router.put('/:slug/edit', isAdmin, async (req, res) => {
+    try {
+        let { imageURL, name, description, category, price } = req.body;
+        await dataService.updateOne(req.params.slug, imageURL, name, description, category, price);
+        res.redirect('/e-shop');
+    } catch (err) {
+        res
+            .status(400, 'A required action was not successful! Try again!')
+            .redirect('/e-shop');
+    }
+});
+
+
+//Delete product
+router.delete('/:id', isAdmin, async (req, res) => {
+    await dataService.deleteOne(req.params.id);
+
+    res.redirect('/e-shop');
+});
+
+
+
+//Categories
 router.use('/categories', categoryRouter);
 
 module.exports = router;

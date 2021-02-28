@@ -10,6 +10,6 @@ client.connect(err => {
     client.close();
 });
 
-mongoose.connect(URI_Atlass, { useNewUrlParser: true, useUnifiedTopology: true, usecCeateIndex: true });
+mongoose.connect(URI_Atlass, { useNewUrlParser: true, useUnifiedTopology: true, useCeateIndex: true });
 
 module.exports = client;
