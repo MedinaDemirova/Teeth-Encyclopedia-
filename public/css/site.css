@@ -62,7 +62,7 @@ color:rgb(68, 5, 68);
  background-image: url("https://www.cheatsheet.com/wp-content/uploads/2017/08/Toothbrushes.jpg?x23912");
  background-size: cover;
  width: 150;
- height: calc(var(--product-h) *3);
+ height: calc(var(--product-h) *3.5);
  
 }
 .btn-shop{
@@ -217,7 +217,13 @@ span.error {
     display: block;
 }
 
-
+.add-item{
+    display: inline;
+    position:center ;
+    align-items: left;
+    align-content: left;
+    text-align: left;
+}
 
 .footer {
     background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("http://andreeabunget.co.uk/Img/footer.jpg");
@@ -225,7 +231,12 @@ span.error {
     
 }
 
-
+.btn-back-add{
+    position: relative;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: orange;
+}
 
 .first {
     margin-top: 40px;
@@ -409,3 +420,5 @@ span.error {
     margin-top:100px;
     margin-bottom:100px;
 }
+
+

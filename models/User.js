@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const {english_letters_numbers_pattern} = require('../secrets/auth');
+const {english_letters_numbers_pattern, en} = require('../secrets/auth');
+
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -33,7 +34,12 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         required: true,
         default: false
-    }
+    },
+    items: [{
+        type: mongoose.Types.ObjectId,
+        quantity: Number,
+        ref: 'Product'
+    }]
 });
 
 module.exports = mongoose.model('User', userSchema); 

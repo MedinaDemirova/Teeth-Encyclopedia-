@@ -1,5 +1,6 @@
 
 const Product = require('../models/Product');
+const User = require('../models/User');
 
 async function create(data) {
     let { name, description, imageURL, category, price } = data;
@@ -43,11 +44,26 @@ async function deleteOne(id) {
 }
 
 
+async function addItem(userID, id, quantity) {
+    let user = await User.findById(userID);
+    user.items.push({ id, quantity });
+    return user.save();
+}
+
+
+async function getAllItems(id) {
+    let items = await User.findById(id).populate('items');
+    return items;
+}
+
+
 module.exports = {
     create,
     getAll,
     getOne,
     getByCategory,
     updateOne,
-    deleteOne
+    deleteOne,
+    addItem,
+    getAllItems
 }

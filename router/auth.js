@@ -36,7 +36,6 @@ router.post('/register', isGuest, async (req, res) => {
 
     try {
         let result = await authService.register(req.body);
-        console.log(result)
         res.redirect('/auth/login')
     } catch (error) {
 

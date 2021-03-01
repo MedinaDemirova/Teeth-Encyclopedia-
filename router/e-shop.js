@@ -4,6 +4,7 @@ const isAuthenticated = require('../middlewares/isAuthenticated');
 const isAdmin = require('../middlewares/isAdmin');
 const dataService = require('../serveses/dataService');
 const categoryRouter = require('../router/e-shop-categories');
+const orderRouter = require('../router/e-shop-orders');
 
 //Home Page
 router.get('/', async (req, res) => {
@@ -32,6 +33,8 @@ router.post('/create-product', isAdmin, async (req, res) => {
         res.render('e-shop/home', { error: { message: err } });
     }
 });
+
+
 
 //Details
 router.get('/:slug', isAuthenticated, async (req, res) => {
@@ -81,5 +84,6 @@ router.delete('/:id', isAdmin, async (req, res) => {
 
 //Categories
 router.use('/categories', categoryRouter);
+router.use('/order', orderRouter);
 
 module.exports = router;
