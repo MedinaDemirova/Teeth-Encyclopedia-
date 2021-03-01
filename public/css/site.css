@@ -1,4 +1,7 @@
 
+:root{
+    --product-h: 250px;
+}
 html, body {
     background-image: url("../images/17395.jpg");
     background-size: cover;
@@ -47,7 +50,9 @@ text-align: center;
     margin-bottom: 8%;
     margin-left:4%;
     align-content: center;
-    text-align: center
+    text-align: center;
+    height: var(--product-h);
+    width: 350px;
 }
 .cv{
 color:rgb(68, 5, 68);
@@ -56,6 +61,8 @@ color:rgb(68, 5, 68);
 .col-lg-3{
  background-image: url("https://www.cheatsheet.com/wp-content/uploads/2017/08/Toothbrushes.jpg?x23912");
  background-size: cover;
+ width: 150;
+ height: calc(var(--product-h) *3);
  
 }
 .btn-shop{

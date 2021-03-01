@@ -48,8 +48,6 @@ productSchema.pre('validate', function (next) {
 
 productSchema.pre("save", function () {
     this.name = this.name.toUpperCase();
-    this.price = this.price.toFixed(2);
-
 });
 
 

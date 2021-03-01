@@ -16,20 +16,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-//Details
-router.get('/:slug', isAuthenticated, async (req, res) => {
-    try {
-        let product = await dataService.getOne(req.params.slug)
-
-        res.render('e-shop/details', { product: product });
-    } catch (err) {
-        res.render('e-shop/home', { error: { message: err } });
-    }
-});
-
-
-
-//////  ADMIN ONLY  ///// 
 
 //Create product
 router.get('/create-product', isAdmin, (req, res) => {
@@ -46,6 +32,18 @@ router.post('/create-product', isAdmin, async (req, res) => {
         res.render('e-shop/home', { error: { message: err } });
     }
 });
+
+//Details
+router.get('/:slug', isAuthenticated, async (req, res) => {
+    try {
+        let product = await dataService.getOne(req.params.slug)
+
+        res.render('e-shop/details', { product: product });
+    } catch (err) {
+        res.render('e-shop/home', { error: { message: err } });
+    }
+});
+
 
 //Edit product
 router.get('/:slug/edit', isAdmin, async (req, res) => {
