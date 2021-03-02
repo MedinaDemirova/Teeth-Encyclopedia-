@@ -1,1 +1,25 @@
 <h1 class="headermain">My Basket</h1>
+
+{{#unless products }}
+<h4 >No added products yet</h4>
+{{else}}
+<table style="width:100%">
+    <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    {{#each products}}
+    <tr>
+        <td>{{products.name}}</td>
+        <td>{{products.quantity}}</td>
+        <td>{{products.price}}</td>
+    </tr>
+
+    {{/each}}
+
+    <tr>
+        <td>Total</td>
+    </tr>
+</table>
+{{/unless}}

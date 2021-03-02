@@ -36,9 +36,8 @@ const userSchema = new mongoose.Schema({
         default: false
     },
     items: [{
-        type: mongoose.Types.ObjectId,
-        quantity: Number,
-        ref: 'Product'
+        productID: String,
+        quantity:String,
     }]
 });
 

@@ -1,4 +1,4 @@
-
+const mongoose = require('mongoose');
 const Product = require('../models/Product');
 const User = require('../models/User');
 
@@ -44,16 +44,31 @@ async function deleteOne(id) {
 }
 
 
-async function addItem(userID, id, quantity) {
+async function addItem(userID, productID, quantity) {
     let user = await User.findById(userID);
-    user.items.push({ id, quantity });
+    user.items.push({ quantity: quantity });
     return user.save();
 }
 
+async function removeAllItems(userID) {
+    let user = await User.findById(userID);
+    user.items = [];
+    return user.save();
+}
 
 async function getAllItems(id) {
-    let items = await User.findById(id).populate('items');
-    return items;
+    let ids = [];
+    let user = await User.findById(id);
+    let idArr = Object.values(user.items);
+    idArr.forEach(element => { ids.push(element._id) });
+    let products = await Product.find().lean();
+    console.log (products)
+    console.log(ids)
+    products.filter(product => ids.includes(product._id));
+    console.log(products)
+
+    if (products.length == 0) return undefined;
+    return products;
 }
 
 
@@ -65,5 +80,6 @@ module.exports = {
     updateOne,
     deleteOne,
     addItem,
-    getAllItems
+    getAllItems,
+    removeAllItems
 }

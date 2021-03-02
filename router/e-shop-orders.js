@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const dataService = require('../serveses/dataService');
 
+//Show basket
+router.get('/my-basket', async(req,res)=>{
+    try{
+        let products = await dataService.getAllItems(req.user._id);
+        res.render('e-shop/my-basket', { products });
+    }catch (err){
+        res.redirect ('/s-shop');
+    }
+})
 
 //Add to basket
 router.get('/:slug/add-to-basket', async (req, res) => {
@@ -18,19 +27,17 @@ router.post('/:slug/add-to-basket', async (req, res) => {
         let quantity = req.body.quantity;
         let userID = req.user._id;
         let product = await dataService.getOne(req.params.slug);
-        let id = product._id;
-        console.log  (id)
-//do tuk done
-        await dataService.addItem(userID, id, quantity);
+        let productID = product._id;
+        await dataService.addItem(userID, productID, quantity);
         console.log('done');
         let products = await dataService.getAllItems(userID);
+        console.log (products)
         res.render('e-shop/my-basket', { products });
     } catch (err) {
         res.redirect(`/e-shop/${req.params.slug}`);
     }
 });
 
-//Show basket
 
 
 
