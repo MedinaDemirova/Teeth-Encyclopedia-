@@ -16,10 +16,19 @@ router.get('/my-basket', async (req, res) => {
 });
 
 //Show orders to admin
-router.get ('/show-orders', isAdmin, async(req,res)=>{
-let orders = await dataService.getOrders();
-console.log (orders);
-res.render ('e-shop/orders', {orders})
+router.get('/show-orders', isAdmin, async (req, res) => {
+    let orders = await dataService.getOrders();
+    console.log(orders);
+    res.render('e-shop/orders', { orders })
+});
+
+//Show order details
+router.get('/:id/details', isAdmin, async (req, res) => {
+    let order = await dataService.getOrderById(req.params.id);
+    let products = order.products;
+    console.log(order);
+    console.log (products);
+    res.render('e-shop/order-details', { order, products })
 });
 
 

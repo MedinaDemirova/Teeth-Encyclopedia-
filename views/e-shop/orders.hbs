@@ -7,27 +7,27 @@
 
     {{else}}
 
-    <a href="/e-shop/order/empty-my-basket"><button class="btn btn-info">Empty your basket</button></a>
+    <a href="/e-shop/order/empty-orders-list"><button class="btn btn-info">Empty orders list</button></a>
 
     <div class="table-basket">
         <table>
             <tr>
                 <th>Order ID</th>
-                <th>Quantity</th>
                 <th>Emai</th>
                 <th>Phone number</th>
                 <th>Adress</th>
-                 <th>User ID</th>
+                <th>User ID</th>
+                <th>Show products</th>
             </tr>
 
             {{#each orders}}
             <tr>
                 <td>{{_id}}</td>
-                <td>{{quantity}}</td>
                 <td>{{email}}</td>
                 <td>{{phone}}</td>
                 <td>{{adress}}</td>
                  <td>{{userID}}</td>
+                 <td><a href="/e-shop/order/{{_id}}/details">Products to send</a></td>
             </tr>
             {{/each}}
 

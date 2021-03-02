@@ -84,6 +84,10 @@ async function getOrders(){
 return await Order.find().lean();
 }
 
+async function getOrderById(id){
+    return await Order.findById(id).lean();
+}
+
 module.exports = {
     create,
     getAll,
@@ -96,5 +100,6 @@ module.exports = {
     removeAllItems,
     calcTotal,
     placeOrder,
-    getOrders
+    getOrders,
+    getOrderById
 }

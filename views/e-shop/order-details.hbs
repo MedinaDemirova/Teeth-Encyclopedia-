@@ -1,0 +1,21 @@
+<a href="/e-shop/order/empty-orders-list"><button class="btn btn-info">Empty orders list</button></a>
+
+<div class="table-basket">
+    <table>
+        <tr>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
+
+        {{#each products}}
+        <tr>
+            <td>{{_id}}</td>
+            <td>{{quantity}}</td>
+            <td><a href="/e-shop/order/{{_id}}/details">Complete</a></td>
+        </tr>
+        {{/each}}
+    </table>
+
+</div>
+<a href="/e-shop/order/show-orders"><button class="confirm btn btn-info">Back</button></a>
