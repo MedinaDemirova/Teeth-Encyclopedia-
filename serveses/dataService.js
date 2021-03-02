@@ -2,7 +2,6 @@ const Order = require('../models/Order');
 const Product = require('../models/Product');
 const User = require('../models/User');
 
-
 async function create(data) {
     let { name, description, imageURL, category, price } = data;
     let newProduct = await new Product({ name, description, imageURL, category, price });
@@ -81,6 +80,10 @@ async function placeOrder(userID, products, adress, phone, email) {
     return newOrder.save();
 };
 
+async function getOrders(){
+return await Order.find().lean();
+}
+
 module.exports = {
     create,
     getAll,
@@ -92,5 +95,6 @@ module.exports = {
     getAllItems,
     removeAllItems,
     calcTotal,
-    placeOrder
+    placeOrder,
+    getOrders
 }

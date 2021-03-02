@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const dataService = require('../serveses/dataService');
+const isAdmin = require('../middlewares/isAdmin');
 
 //Show basket
 router.get('/my-basket', async (req, res) => {
@@ -12,7 +13,15 @@ router.get('/my-basket', async (req, res) => {
     } catch (err) {
         res.redirect('/e-shop');
     }
-})
+});
+
+//Show orders to admin
+router.get ('/show-orders', isAdmin, async(req,res)=>{
+let orders = await dataService.getOrders();
+console.log (orders);
+res.render ('e-shop/orders', {orders})
+});
+
 
 //Add to basket
 router.get('/:slug/add-to-basket', async (req, res) => {
@@ -49,14 +58,14 @@ router.post('/confirm', async (req, res) => {
     let products = await dataService.getAllItems(userID);
     await dataService.placeOrder(userID, products, adress, phone, email);
     await dataService.removeAllItems(userID);
-    res.redirect('/e-shop');
+    res.render('e-shop/home', { success: { message: 'Your order was successful!' } });
 });
 
 //Empty basket
 router.get('/empty-my-basket', async (req, res) => {
     let userID = req.user._id;
     await dataService.removeAllItems(userID);
-    res.redirect('/e-shop');
+    res.render('e-shop/home', { success: { message: 'Your basket  is empty' } });
 });
 
 module.exports = router;

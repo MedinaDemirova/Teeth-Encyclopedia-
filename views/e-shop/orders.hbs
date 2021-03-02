@@ -1,0 +1,37 @@
+<h1 class="headermain">Orders to complete</h1>
+
+<div class="div">
+    {{#unless orders }}
+    <h4>No orders to complete </h4>
+    <a class="btn-back" href="/e-shop" class="btn btn-info">Shop now!</a>
+
+    {{else}}
+
+    <a href="/e-shop/order/empty-my-basket"><button class="btn btn-info">Empty your basket</button></a>
+
+    <div class="table-basket">
+        <table>
+            <tr>
+                <th>Order ID</th>
+                <th>Quantity</th>
+                <th>Emai</th>
+                <th>Phone number</th>
+                <th>Adress</th>
+                 <th>User ID</th>
+            </tr>
+
+            {{#each orders}}
+            <tr>
+                <td>{{_id}}</td>
+                <td>{{quantity}}</td>
+                <td>{{email}}</td>
+                <td>{{phone}}</td>
+                <td>{{adress}}</td>
+                 <td>{{userID}}</td>
+            </tr>
+            {{/each}}
+
+        </table>
+    </div>
+    {{/unless}}
+</div>

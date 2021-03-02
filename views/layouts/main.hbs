@@ -33,7 +33,7 @@
             <div class="pull-right ">
                 <h6 class="admin"> admin_ </h6>
             </div> 
-            <a class="btn pull-right header-btn btn-shop"  href="/e-shop/orders"> Orders to complete </a>
+            <a class="btn pull-right header-btn btn-shop"  href="/e-shop/order/show-orders"> Orders to complete </a>
             <a class="btn pull-right header-btn btn-shop"  href="/e-shop/create-product"> Add new product </a>
             {{else}}
               <a class="btn pull-right header-btn btn-shop"  href="/e-shop/order/my-basket"> - My basket -</a>
@@ -51,6 +51,12 @@
     {{#if error}}
     <div>
         <span class="error">{{error.message}}</span>
+    </div>
+    {{/if}}
+
+    {{#if success}}
+    <div>
+        <span class="success">{{success.message}}</span>
     </div>
     {{/if}}
     <div class="main-body">

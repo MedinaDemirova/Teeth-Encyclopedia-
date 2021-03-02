@@ -262,6 +262,24 @@ span.error {
     display: block;
 }
 
+span.success {
+    animation: fadeOut 1s forwards;
+    animation-delay: 2s;
+    background: rgb(2, 143, 56);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: normal;
+    position: relative;
+    float: right;
+    margin-top: 20px;
+    overflow: hidden;
+    display: block;
+}
+
+
 .add-item{
     display: inline;
     position:center ;
