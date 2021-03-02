@@ -84,6 +84,6 @@ router.delete('/:id', isAdmin, async (req, res) => {
 
 //Categories
 router.use('/categories', categoryRouter);
-router.use('/order', orderRouter);
+router.use('/order',isAuthenticated, orderRouter);
 
 module.exports = router;

@@ -3,12 +3,14 @@ const router = express.Router();
 const dataService = require('../serveses/dataService');
 
 //Show basket
-router.get('/my-basket', async(req,res)=>{
-    try{
+router.get('/my-basket', async (req, res) => {
+    try {
+        let total = undefined;
         let products = await dataService.getAllItems(req.user._id);
-        res.render('e-shop/my-basket', { products });
-    }catch (err){
-        res.redirect ('/s-shop');
+        if (products) { total = await dataService.calcTotal(products) }
+        res.render('e-shop/my-basket', { products, total });
+    } catch (err) {
+        res.redirect('/e-shop');
     }
 })
 
@@ -29,16 +31,32 @@ router.post('/:slug/add-to-basket', async (req, res) => {
         let product = await dataService.getOne(req.params.slug);
         let productID = product._id;
         await dataService.addItem(userID, productID, quantity);
-        console.log('done');
-        let products = await dataService.getAllItems(userID);
-        console.log (products)
-        res.render('e-shop/my-basket', { products });
+        res.redirect('/e-shop/order/my-basket');
     } catch (err) {
         res.redirect(`/e-shop/${req.params.slug}`);
     }
 });
 
 
+//Add shipping info and place order
+router.get('/confirm', (req, res) => {
+    res.render('e-shop/shipping-info');
+});
 
+router.post('/confirm', async (req, res) => {
+    let userID = req.user._id;
+    let { adress, phone, email } = req.body;
+    let products = await dataService.getAllItems(userID);
+    await dataService.placeOrder(userID, products, adress, phone, email);
+    await dataService.removeAllItems(userID);
+    res.redirect('/e-shop');
+});
+
+//Empty basket
+router.get('/empty-my-basket', async (req, res) => {
+    let userID = req.user._id;
+    await dataService.removeAllItems(userID);
+    res.redirect('/e-shop');
+});
 
 module.exports = router;

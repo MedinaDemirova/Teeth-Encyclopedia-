@@ -1,25 +1,38 @@
 <h1 class="headermain">My Basket</h1>
 
-{{#unless products }}
-<h4 >No added products yet</h4>
-{{else}}
-<table style="width:100%">
-    <tr>
-        <th>Item</th>
-        <th>Quantity</th>
-        <th>Price</th>
-    </tr>
-    {{#each products}}
-    <tr>
-        <td>{{products.name}}</td>
-        <td>{{products.quantity}}</td>
-        <td>{{products.price}}</td>
-    </tr>
+<div class="div">
+    {{#unless products }}
+    <h4>No added products yet</h4>
+    <a class="btn-back" href="/e-shop" class="btn btn-info">Shop now!</a>
 
-    {{/each}}
+    {{else}}
+   
+        <a href="/e-shop/order/empty-my-basket"><button class="btn btn-info">Empty your basket</button></a>
 
-    <tr>
-        <td>Total</td>
-    </tr>
-</table>
-{{/unless}}
+
+    <div class="table-basket">
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+
+            {{#each products}}
+            <tr>
+                <td>{{name}}</td>
+                <td>{{quantity}}</td>
+                <td>{{price}}</td>
+            </tr>
+
+            {{/each}}
+
+
+        </table>
+    </div>
+    <div class="total">
+        Total: EU {{total}}
+        <a href="/e-shop/order/confirm"><button class="confirm">Add shipping info</button></a>
+    </div>
+    {{/unless}}
+</div>

@@ -45,6 +45,51 @@ text-align: center;
  box-shadow: 0 0 10px rgb(76, 116, 153);
 }
 
+.table-basket{
+    box-shadow: 0 0 10px rgb(76, 116, 153);
+    margin-top: 3%;
+    margin-bottom:3%;
+    text-align: left;
+}
+
+table, tr{
+    width: 100%;
+    border-top: 1px solid rgb(74, 119, 218);
+    border-bottom: 1px solid rgb(74, 119, 218);
+}
+ 
+th{
+    height: 50px;
+}
+
+tr{
+  
+    height: 30px;
+}
+
+
+
+.total{
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(2, 54, 88);
+    display: inline-block;
+    position: absolute;
+    right: 5%;
+}
+
+.confirm{
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(2, 54, 88);
+    background-color: orange;
+
+}
+.div{
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
 .h-100{
     padding: 3%;
     margin-bottom: 8%;

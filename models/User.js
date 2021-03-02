@@ -38,6 +38,8 @@ const userSchema = new mongoose.Schema({
     items: [{
         productID: String,
         quantity:String,
+        name:String,
+        price:Number
     }]
 });
 
