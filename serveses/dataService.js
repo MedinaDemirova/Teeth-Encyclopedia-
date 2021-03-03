@@ -47,8 +47,9 @@ async function deleteOne(id) {
 async function addItem(userID, productID, quantity) {
     let user = await User.findById(userID);
     let product = await Product.findById(productID);
-    console.log('product:' + product)
-    user.items.push({ quantity: quantity, name: product.name, price: product.price });
+    console.log(quantity)
+    user.items.push({ name: product.name, price: product.price, quantity });
+    console.log(user.items);
     return user.save();
 }
 
@@ -75,17 +76,22 @@ function calcTotal(arr) {
 
 async function placeOrder(userID, products, adress, phone, email) {
     let productsIDs = [];
-    products.forEach(product => { productsIDs.push(product._id) });
+    products.forEach(product => { productsIDs.push({ _id: product._id, quantity: product.quantity }) });
     let newOrder = await new Order({ userID, products: productsIDs, adress, email, phone });
     return newOrder.save();
 };
 
-async function getOrders(){
-return await Order.find().lean();
+async function getOrders() {
+     return await Order.find().sort({'createdAt':1}).lean();
 }
 
-async function getOrderById(id){
+async function getOrderById(id) {
     return await Order.findById(id).lean();
+}
+
+async function completeOrderById(id) {
+    return await Order.findByIdAndDelete(id);
+
 }
 
 module.exports = {
@@ -101,5 +107,6 @@ module.exports = {
     calcTotal,
     placeOrder,
     getOrders,
-    getOrderById
+    getOrderById,
+    completeOrderById
 }

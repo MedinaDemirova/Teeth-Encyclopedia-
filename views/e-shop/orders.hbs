@@ -3,16 +3,13 @@
 <div class="div">
     {{#unless orders }}
     <h4>No orders to complete </h4>
-    <a class="btn-back" href="/e-shop" class="btn btn-info">Shop now!</a>
-
     {{else}}
-
-    <a href="/e-shop/order/empty-orders-list"><button class="btn btn-info">Empty orders list</button></a>
 
     <div class="table-basket">
         <table>
             <tr>
                 <th>Order ID</th>
+                <th>Date</th>
                 <th>Emai</th>
                 <th>Phone number</th>
                 <th>Adress</th>
@@ -23,6 +20,7 @@
             {{#each orders}}
             <tr>
                 <td>{{_id}}</td>
+                <td>{{createdAt}}</td>
                 <td>{{email}}</td>
                 <td>{{phone}}</td>
                 <td>{{adress}}</td>

@@ -20,6 +20,10 @@ const orderSchema = new mongoose.Schema({
     phone:{
         type:Number,
         required:true
+    },
+    createdAt: {
+        type: Date,
+        default: () => Date.now()
     }
 });
 

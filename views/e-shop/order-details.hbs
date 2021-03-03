@@ -1,4 +1,3 @@
-<a href="/e-shop/order/empty-orders-list"><button class="btn btn-info">Empty orders list</button></a>
 
 <div class="table-basket">
     <table>
@@ -12,7 +11,7 @@
         <tr>
             <td>{{_id}}</td>
             <td>{{quantity}}</td>
-            <td><a href="/e-shop/order/{{_id}}/details">Complete</a></td>
+            <td><a href="/e-shop/order/{{orderID}}/complete-order">Complete</a></td>
         </tr>
         {{/each}}
     </table>
