@@ -14,6 +14,15 @@ async function getAll() {
     return products;
 }
 
+async function findProductAndSetName(products) {
+    for (let i = 0; i < products.length; i++) {
+        console.log(products[i]._id)
+        let product = await Product.findById(products[i]._id).lean();
+        products[i].name = product.name;
+    }
+    return products;
+}
+
 async function getOne(slug) {
     let product = await Product.findOne({ slug }).lean();
     product.price = product.price.toFixed(2);
@@ -48,7 +57,7 @@ async function addItem(userID, productID, quantity) {
     let user = await User.findById(userID);
     let product = await Product.findById(productID);
     console.log(quantity)
-    user.items.push({ name: product.name, price: product.price, quantity });
+    user.items.push({ _id: productID, name: product.name, price: product.price, quantity });
     console.log(user.items);
     return user.save();
 }
@@ -82,7 +91,7 @@ async function placeOrder(userID, products, adress, phone, email) {
 };
 
 async function getOrders() {
-     return await Order.find().sort({'createdAt':1}).lean();
+    return await Order.find().sort({ 'createdAt': 1 }).lean();
 }
 
 async function getOrderById(id) {
@@ -108,5 +117,6 @@ module.exports = {
     placeOrder,
     getOrders,
     getOrderById,
-    completeOrderById
+    completeOrderById,
+    findProductAndSetName
 }

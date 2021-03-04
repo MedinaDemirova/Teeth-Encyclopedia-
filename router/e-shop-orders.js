@@ -26,8 +26,10 @@ router.get('/show-orders', isAdmin, async (req, res) => {
 router.get('/:id/details', isAdmin, async (req, res) => {
     let order = await dataService.getOrderById(req.params.id);
     let products = order.products;
+    let orderID = order._id;
+    peoducts = await dataService.findProductAndSetName(products);
     products.forEach(product => { product.orderID = order._id });
-    res.render('e-shop/order-details', { products })
+    res.render('e-shop/order-details', { products,orderID })
 });
 
 //Complete order admin
@@ -52,6 +54,7 @@ router.post('/:slug/add-to-basket', async (req, res) => {
         let quantity = req.body.quantity;
         let userID = req.user._id;
         let product = await dataService.getOne(req.params.slug);
+        console.log (product._id)
         let productID = product._id;
         await dataService.addItem(userID, productID, quantity);
         res.redirect('/e-shop');

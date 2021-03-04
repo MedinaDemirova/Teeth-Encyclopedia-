@@ -1,8 +1,8 @@
-
 <div class="table-basket">
     <table>
         <tr>
             <th>Product ID</th>
+            <th>Product Name</th>
             <th>Quantity</th>
             <th>Status</th>
         </tr>
@@ -10,11 +10,15 @@
         {{#each products}}
         <tr>
             <td>{{_id}}</td>
+            <td>{{name}}</td>
             <td>{{quantity}}</td>
-            <td><a href="/e-shop/order/{{orderID}}/complete-order">Complete</a></td>
+            <td>Waiting for dispatch</td>
+          
         </tr>
         {{/each}}
+      
     </table>
 
 </div>
 <a href="/e-shop/order/show-orders"><button class="confirm btn btn-info">Back</button></a>
+  <a href="/e-shop/order/{{orderID}}/complete-order"> <button class="btn btn-success">Complete</button> </a>
